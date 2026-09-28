@@ -28,3 +28,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# stray Claude Code notify-signal artifacts (occasionally created in the cwd)
+C:Userssyada.claudeclaude-notify-signals*
