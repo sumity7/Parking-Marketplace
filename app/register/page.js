@@ -39,11 +39,17 @@ export default function RegisterPage() {
   return (
     <div className="max-w-md mx-auto">
       <div className="text-center mb-6">
-        <p className="text-2xl" aria-hidden="true">🅿️</p>
-        <h1 className="font-display text-xl font-bold text-navy-900 mt-1">Create your account</h1>
+        <span
+          className="inline-flex h-12 w-12 rounded-xl items-center justify-center text-white font-display font-bold text-lg shadow-soft"
+          style={{ backgroundImage: "linear-gradient(135deg, #2f6fed, #183f97)" }}
+          aria-hidden="true"
+        >
+          P
+        </span>
+        <h1 className="font-display text-xl font-bold text-navy-900 mt-3">Create your account</h1>
         <p className="text-sm text-gray-500 mt-1">List a spot or start booking in minutes.</p>
       </div>
-      <div className="card">
+      <div className="card shadow-lifted">
         {error && <p className="text-danger-600 text-sm mb-3 bg-danger-50 rounded-lg px-3 py-2">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>

@@ -13,9 +13,25 @@ function NavLink({ href, children, onClick }) {
     <Link
       href={href}
       onClick={onClick}
-      className={`text-sm font-medium transition-colors ${active ? "text-brand-700" : "text-navy-600 hover:text-navy-900"}`}
+      className={`relative text-sm font-medium transition-colors py-1 ${active ? "text-brand-700" : "text-navy-600 hover:text-navy-900"}`}
     >
       {children}
+      {active && <span className="absolute -bottom-[1px] left-0 right-0 h-0.5 rounded-full bg-brand-500" aria-hidden="true" />}
+    </Link>
+  );
+}
+
+function Logo() {
+  return (
+    <Link href="/" className="flex items-center gap-2 group">
+      <span
+        className="h-8 w-8 rounded-lg flex items-center justify-center text-white font-display font-bold text-sm shadow-soft transition-transform group-hover:scale-105"
+        style={{ backgroundImage: "linear-gradient(135deg, #2f6fed, #183f97)" }}
+        aria-hidden="true"
+      >
+        P
+      </span>
+      <span className="text-xl font-display font-bold text-navy-800">ParkSpot</span>
     </Link>
   );
 }
@@ -27,9 +43,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-display font-bold text-navy-800 flex items-center gap-1.5">
-          <span aria-hidden="true">🅿️</span> ParkSpot
-        </Link>
+        <Logo />
 
         <nav className="hidden md:flex items-center gap-6">
           <NavLink href="/">Find Parking</NavLink>

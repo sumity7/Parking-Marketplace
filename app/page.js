@@ -109,18 +109,29 @@ export default async function HomePage({ searchParams }) {
   return (
     <div className="space-y-16">
       {/* Hero */}
-      <section className="rounded-2xl bg-navy-800 text-white px-6 sm:px-10 py-12 sm:py-16 -mx-4 sm:mx-0 overflow-hidden relative">
-        <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true" />
+      <section
+        className="rounded-2xl text-white px-6 sm:px-10 py-14 sm:py-20 -mx-4 sm:mx-0 overflow-hidden relative"
+        style={{ backgroundImage: "linear-gradient(160deg, #0b1728 0%, #101f3a 45%, #152f6e 100%)" }}
+      >
+        <div className="absolute inset-0 bg-dot-grid text-white/[0.06]" aria-hidden="true" />
+        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true" />
+        <div className="absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-success-500/10 blur-3xl" aria-hidden="true" />
+
         <div className="relative max-w-2xl">
-          <h1 className="font-display text-3xl sm:text-4xl font-bold leading-tight text-balance">
-            Find a parking spot without the hassle.
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-3 py-1 text-xs font-medium text-navy-100 backdrop-blur">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" /></svg>
+            Verified owners · Moderated listings
+          </span>
+
+          <h1 className="font-display text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight mt-4 text-balance">
+            Find a parking spot<br className="hidden sm:block" /> <span className="text-gradient">without the hassle.</span>
           </h1>
-          <p className="text-navy-200 mt-3 text-base sm:text-lg">
+          <p className="text-navy-200 mt-4 text-base sm:text-lg max-w-lg">
             Rent a verified spot from a local owner, by the hour — no circling the block, no meters.
           </p>
-          <div className="flex flex-wrap gap-3 mt-6">
-            <a href="#search" className="btn-primary">Find Parking</a>
-            <Link href="/spots/new" className="btn bg-white/10 text-white hover:bg-white/20 backdrop-blur">
+          <div className="flex flex-wrap gap-3 mt-8">
+            <a href="#search" className="btn-primary shadow-lifted">Find Parking</a>
+            <Link href="/spots/new" className="btn bg-white/10 text-white border border-white/15 hover:bg-white/20 backdrop-blur">
               List Your Spot
             </Link>
           </div>
@@ -160,13 +171,13 @@ export default async function HomePage({ searchParams }) {
       {/* Trust indicators */}
       <section className="grid sm:grid-cols-3 gap-4">
         {TRUST_ITEMS.map((item) => (
-          <div key={item.label} className="flex gap-3">
-            <div className="h-9 w-9 rounded-full bg-success-50 text-success-600 flex items-center justify-center flex-none">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" /></svg>
+          <div key={item.label} className="card-flat card-hover flex gap-3 p-4">
+            <div className="h-10 w-10 rounded-full bg-success-50 text-success-600 flex items-center justify-center flex-none">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" /></svg>
             </div>
             <div>
               <p className="font-semibold text-navy-800 text-sm">{item.label}</p>
-              <p className="text-sm text-gray-500">{item.desc}</p>
+              <p className="text-sm text-gray-500 mt-0.5">{item.desc}</p>
             </div>
           </div>
         ))}
@@ -186,25 +197,32 @@ export default async function HomePage({ searchParams }) {
 
       {/* How it works */}
       <section>
-        <h2 className="font-display text-xl font-bold text-navy-900 mb-6 text-center">How it works</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <h2 className="font-display text-xl font-bold text-navy-900 mb-8 text-center">How it works</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          <div className="hidden lg:block absolute top-6 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" aria-hidden="true" />
           {STEPS.map((step) => (
-            <div key={step.n}>
-              <p className="font-display text-2xl font-bold text-brand-200 mb-1">{step.n}</p>
-              <p className="font-semibold text-navy-800">{step.title}</p>
-              <p className="text-sm text-gray-500">{step.desc}</p>
+            <div key={step.n} className="relative text-center sm:text-left">
+              <div className="mx-auto sm:mx-0 h-12 w-12 rounded-full bg-white border-2 border-brand-500 text-brand-600 font-display font-bold flex items-center justify-center relative z-10 shadow-soft">
+                {step.n}
+              </div>
+              <p className="font-semibold text-navy-800 mt-3">{step.title}</p>
+              <p className="text-sm text-gray-500 mt-0.5">{step.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* List your spot CTA */}
-      <section className="card bg-navy-50 border-navy-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-        <div>
-          <p className="font-display text-lg font-bold text-navy-900">Have an empty parking space?</p>
-          <p className="text-sm text-gray-600">Turn it into income — list it in minutes, we handle the rest.</p>
+      <section
+        className="rounded-xl border border-navy-100 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left relative overflow-hidden"
+        style={{ backgroundImage: "linear-gradient(135deg, #eef4ff 0%, #eef1f6 100%)" }}
+      >
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-200/30 blur-2xl" aria-hidden="true" />
+        <div className="relative">
+          <p className="font-display text-lg sm:text-xl font-bold text-navy-900">Have an empty parking space?</p>
+          <p className="text-sm text-gray-600 mt-1">Turn it into income — list it in minutes, we handle the rest.</p>
         </div>
-        <Link href="/spots/new" className="btn-primary flex-none">List Your Spot</Link>
+        <Link href="/spots/new" className="btn-primary flex-none relative">List Your Spot</Link>
       </section>
 
       {/* FAQ */}

@@ -5,7 +5,16 @@ export default function Footer() {
     <footer className="border-t border-gray-200 bg-white mt-16">
       <div className="max-w-6xl mx-auto px-4 py-10 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <p className="font-display font-bold text-navy-800 text-lg mb-2">🅿️ ParkSpot</p>
+          <div className="flex items-center gap-2 mb-2">
+            <span
+              className="h-7 w-7 rounded-lg flex items-center justify-center text-white font-display font-bold text-xs"
+              style={{ backgroundImage: "linear-gradient(135deg, #2f6fed, #183f97)" }}
+              aria-hidden="true"
+            >
+              P
+            </span>
+            <p className="font-display font-bold text-navy-800 text-lg">ParkSpot</p>
+          </div>
           <p className="text-sm text-gray-500">Rent a parking spot from a verified local owner, by the hour.</p>
         </div>
         <div>

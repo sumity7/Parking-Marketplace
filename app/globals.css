@@ -36,21 +36,29 @@ h1, h2, h3, h4 {
 
 /* ---------- Buttons ---------- */
 .btn {
-  @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors
-         disabled:opacity-50 disabled:cursor-not-allowed
+  @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2.5 text-sm font-semibold
+         transition-all duration-150 active:scale-[0.97]
+         disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500;
 }
 .btn-primary {
-  @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-soft;
+  @apply btn text-white shadow-soft hover:shadow-lifted;
+  background-image: linear-gradient(135deg, theme("colors.brand.600"), theme("colors.brand.700"));
+}
+.btn-primary:hover {
+  background-image: linear-gradient(135deg, theme("colors.brand.500"), theme("colors.brand.600"));
+}
+.btn-primary:active {
+  background-image: linear-gradient(135deg, theme("colors.brand.700"), theme("colors.brand.800"));
 }
 .btn-secondary {
-  @apply btn bg-white text-navy-700 border border-gray-200 hover:bg-gray-50 active:bg-gray-100;
+  @apply btn bg-white text-navy-700 border border-gray-200 shadow-soft hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100;
 }
 .btn-ghost {
   @apply btn bg-transparent text-navy-600 hover:bg-navy-50;
 }
 .btn-danger {
-  @apply btn bg-danger-500 text-white hover:bg-danger-600 active:bg-danger-700;
+  @apply btn bg-danger-500 text-white shadow-soft hover:bg-danger-600 active:bg-danger-700;
 }
 .btn-sm {
   @apply px-3 py-1.5 text-xs;
@@ -62,6 +70,23 @@ h1, h2, h3, h4 {
 }
 .card-flat {
   @apply rounded-xl border border-gray-200 bg-white;
+}
+.card-hover {
+  @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lifted hover:border-gray-300;
+}
+
+/* Subtle dot-grid used behind hero/CTA sections — never the only source of a color */
+.bg-dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Gradient text accent, used sparingly on hero headlines */
+.text-gradient {
+  background-image: linear-gradient(135deg, theme("colors.white"), theme("colors.brand.200"));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ---------- Forms ---------- */

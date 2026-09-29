@@ -6,23 +6,29 @@ export default function SpotCard({ spot, showFavorite = false, initialFavorited 
   return (
     <Link
       href={`/spots/${spot._id}`}
-      className="card-flat group block overflow-hidden transition-all hover:shadow-lifted hover:-translate-y-0.5"
+      className="card-flat card-hover group block overflow-hidden"
     >
-      <div className="aspect-video bg-navy-50 overflow-hidden flex items-center justify-center text-navy-300 relative">
+      <div
+        className="aspect-video overflow-hidden flex items-center justify-center text-navy-300 relative"
+        style={!spot.photos?.[0] ? { backgroundImage: "linear-gradient(135deg, #eef1f6, #dce2ec)" } : undefined}
+      >
         {showFavorite && (
           <div className="absolute top-2 right-2 z-10">
             <FavoriteButton spotId={spot._id} initialFavorited={initialFavorited} size="sm" />
           </div>
         )}
         {spot.photos?.[0] ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={spot.photos[0]}
-            alt={spot.title}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={spot.photos[0]}
+              alt={spot.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/25 to-transparent pointer-events-none" aria-hidden="true" />
+          </>
         ) : (
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <rect x="3" y="6" width="18" height="13" rx="2" />
