@@ -29,5 +29,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# stray Claude Code notify-signal artifacts (occasionally created in the cwd)
-C:Userssyada.claudeclaude-notify-signals*
+# stray Claude Code notify-signal artifacts (occasionally created in the cwd,
+# with a non-ASCII lookalike colon character MSYS2/Git Bash substitutes for the
+# ':' that Windows NTFS forbids in filenames — match on the readable part only)
+*claude-notify-signals*
